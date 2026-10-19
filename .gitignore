@@ -1,0 +1,24 @@
+# Private credentials and environments
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+
+# Generated notebooks, experiments, and historical witnesses
+.ipynb_checkpoints/
+saved_results/
+/backups/
+
+# Public downloads and generated analysis; keep only required live-run configuration
+/data/*
+!/data/processed/
+/data/processed/*
+!/data/processed/step6_consolidated_audit/
+/data/processed/step6_consolidated_audit/*
+!/data/processed/step6_consolidated_audit/step6_execution_review.json
+
+# OS clutter
+.DS_Store
+Thumbs.db

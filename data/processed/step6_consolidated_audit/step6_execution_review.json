@@ -1,0 +1,23 @@
+{
+  "execution_authorized": true,
+  "authorization_source": "User: do whatever is required to finish step 6; earlier instruction also requested broad trace coverage",
+  "classifier_code_sha256": "0b2f1743d816f8da8a134e7dffbe1d94220e8fe922b5fe963ea3653b657b11ab",
+  "reviewer": "hak \u2014 AI-assisted technical/evidence review, NOT human sign-off",
+  "review_scope": "Three short full traces plus scoped long-trace evidence checks and documented seven review findings; 14-trace online v3 pilot; known classifier errors retained",
+  "human_correctness_review_complete": false,
+  "independent_teammate_review_required_for_step6": false,
+  "reason": "Original project Step 6 requires classifier implementation and pilot review; teammate pattern review belongs to Step 16. Full-corpus agreement is an exploratory extension, not independent human accuracy.",
+  "quality_claim": "Exploratory classifier; no correctness certification",
+  "known_limitations": [
+    "12/14 v3 responses valid; one non-verbatim quote and one unknown-outcome API request",
+    "Some repetition, clarification and verification rationales remain questionable",
+    "Large-corpus references are AI labels, not human truth"
+  ],
+  "execution_scope": "Development first, then heldout only after development attempts are accounted for; freeze unchanged before heldout; no tuning on heldout",
+  "batch_cap": {
+    "generation_requests": 20,
+    "generated_input_tokens": 1000000
+  },
+  "paid_billing_changes": false,
+  "automatic_generation_retries": 0
+}
