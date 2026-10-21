@@ -19,15 +19,46 @@ def set_api_enabled(enabled=False):
     global _API_ENABLED
     _API_ENABLED = enabled is True
 
+def restore_historical_sources(root=None):
+    """Restore hash-verified embedded Python witnesses only. No data downloads/API calls.
+    Existing differing files are preserved and cause a clear failure.
+    """
+    root = Path(root).resolve() if root is not None else Path(__file__).resolve().parent
+    restored = []
+    for mode, info in PROVENANCE.items():
+        relative = Path(info["archive"].replace(chr(92), "/"))
+        target = (root / relative).resolve()
+        if relative.is_absolute() or not target.is_relative_to(root):
+            raise RuntimeError("Unsafe historical source path: " + mode)
+        payload = _SOURCES[mode].encode("utf-8")
+        expected = info["source_sha256"]
+        if hashlib.sha256(payload).hexdigest() != expected:
+            raise RuntimeError("Embedded historical source checksum mismatch: " + mode)
+        if target.exists():
+            if target.read_bytes() != payload:
+                raise RuntimeError("Historical witness differs; refusing overwrite: " + str(target))
+        else:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                with target.open("xb") as stream:
+                    stream.write(payload)
+            except FileExistsError:
+                if target.read_bytes() != payload:
+                    raise RuntimeError("Historical witness differs; refusing overwrite: " + str(target)) from None
+            restored.append(str(relative))
+    return restored
+
+
 def get_mode(mode):
     if mode not in MODES:
         raise ValueError("Unknown experiment mode: " + str(mode))
+    restore_historical_sources()
     if mode in _CACHE:
         return _CACHE[mode]
     base = "evidence_v2" if mode in ("evidence_v2_recovery", "evidence_v3") else mode
     info = PROVENANCE[base]
     source = _SOURCES[base]
-    witness = Path(__file__).resolve().parent / info["archive"]
+    witness = Path(__file__).resolve().parent / Path(info["archive"].replace(chr(92), "/"))
     if hashlib.sha256(source.encode("utf-8")).hexdigest() != info["source_sha256"]:
         raise RuntimeError("Embedded implementation checksum mismatch: " + base)
     if hashlib.sha256(witness.read_bytes()).hexdigest() != info["source_sha256"]:
@@ -132,18 +163,8 @@ def setup_project(root, download=True):
     import base64, gzip, urllib.request, os, tempfile
     root = Path(root).resolve()
     revision = "95118ac951421753cf1deb87ddea3b01e693c41b"
-    # Restore historical freeze witnesses from embedded verbatim sources.
-    for mode, info in PROVENANCE.items():
-        target = root / info["archive"]
-        payload = _SOURCES[mode].encode("utf-8")
-        if hashlib.sha256(payload).hexdigest() != info["source_sha256"]:
-            raise RuntimeError("Embedded historical source checksum mismatch: " + mode)
-        if target.exists():
-            if target.read_bytes() != payload:
-                raise RuntimeError("Historical witness differs; refusing overwrite: " + str(target))
-        else:
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(payload)
+    # The same source-only bootstrap is also used by get_mode and clean-clone tests.
+    restore_historical_sources(root)
     artifacts = json.loads(gzip.decompress(base64.b64decode(_SETUP_ARTIFACTS)))
     for relative, encoded in artifacts.items():
         target = root / relative

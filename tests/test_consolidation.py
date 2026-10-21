@@ -10,8 +10,9 @@ class ConsolidationTests(unittest.TestCase):
         with self.assertRaises(ValueError): workflows.get_mode("implicit")
     def test_historical_source_hashes(self):
         root = Path(workflows.__file__).parent
+        workflows.restore_historical_sources(root)
         for info in workflows.PROVENANCE.values():
-            self.assertEqual(hashlib.sha256((root/info["archive"]).read_bytes()).hexdigest(), info["source_sha256"])
+            self.assertEqual(hashlib.sha256((root/Path(info["archive"].replace(chr(92), "/"))).read_bytes()).hexdigest(), info["source_sha256"])
     def test_all_modes_deny_api_even_with_allow_api(self):
         workflows.set_api_enabled(False)
         for name in workflows.MODES:

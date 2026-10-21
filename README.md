@@ -51,3 +51,22 @@ If you find this work useful, please cite it as follows:
   year={2025}
 }
 ```
+
+
+## Step 6 tests on a fresh clone
+
+Use the project Python environment with requirements installed, then run:
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
+Tests do not require running the notebook, downloading datasets, providing an API key, or making Gemini requests. `get_mode()` restores any missing historical Python source witnesses under `backups/workflow_consolidation_20261019_103221/` from the exact embedded source in `gemini_workflow.py`, verifying SHA-256 hashes. These generated Python sources are not trace data or saved experiment results; the backups directory remains ignored by Git. Differing existing files are preserved and reported as errors, never silently overwritten.
+
+For explicit source-only restoration (no dataset download):
+
+```powershell
+python -c "import gemini_workflow as w; print(w.restore_historical_sources())"
+```
+
+The notebook's first setup cell separately restores support artifacts and downloads/verifies public datasets when needed. It does not recreate saved model results. Clean-copy regression: 32 tests passed with no pre-existing backups/data/results and network blocked.
