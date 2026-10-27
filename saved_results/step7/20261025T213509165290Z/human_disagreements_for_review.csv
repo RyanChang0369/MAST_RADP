@@ -1,0 +1,4 @@
+trace_hash,framework,split,category,human_label,gemini_label,comparison_status,match,evidence,quotes,review_notes
+102983105332d602ea48b001f5dbabf33e696c60e79812b9e9a33f07fcc651cf,AppWorld,development,fail_to_ask_for_clarification,True,False,comparable,False,The agents successfully communicated and requested login credentials when needed.,[],
+102983105332d602ea48b001f5dbabf33e696c60e79812b9e9a33f07fcc651cf,AppWorld,development,step_repetition,False,True,comparable,False,The agent repeated the action of listing all notes multiple times without new information or necessity.,"[""send_message(app_name='simple_note', message='List all my notes')"", ""send_message(app_name='simple_note', message='List all notes')""]",
+102983105332d602ea48b001f5dbabf33e696c60e79812b9e9a33f07fcc651cf,AppWorld,development,task_derailment,True,False,comparable,False,The agents stayed focused on interacting with the simple note application throughout the trace.,[],

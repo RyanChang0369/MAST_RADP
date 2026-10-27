@@ -1,0 +1,12 @@
+{
+  "state": "paused_local_daily_request_cap",
+  "split": "development",
+  "folder": "C:\\Study\\3rd sem\\soft archi\\mast\\MAST_RADP\\saved_results\\gemini_full_corpus_evidence_v3_full_d3dc092e3c29456f_development",
+  "generation_requests": 14,
+  "generated_input_tokens": 456800,
+  "valid": 9,
+  "invalid": 5,
+  "blocked": 0,
+  "max_generations": 20,
+  "max_input_tokens": 1000000
+}

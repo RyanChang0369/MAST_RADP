@@ -1,0 +1,35 @@
+{
+  "created_at_utc": "20261025T213509165290Z",
+  "scope": "Partial exploratory human-reference comparison",
+  "dataset_revision": "95118ac951421753cf1deb87ddea3b01e693c41b",
+  "saved_records": 243,
+  "offline_validated_records": 184,
+  "coverage": {
+    "development": {
+      "unattempted": 971,
+      "valid": 184,
+      "invalid_response": 56,
+      "request_error": 2,
+      "blocked_input_limit": 1
+    },
+    "heldout": {
+      "unattempted": 323
+    }
+  },
+  "human_comparison_statuses": {
+    "outside_corpus_manifest": 160,
+    "unattempted": 20,
+    "comparable": 10
+  },
+  "comparable_human_traces": 1,
+  "comparable_human_pairs": 10,
+  "disagreements": 3,
+  "conflicting_annotation_rows_excluded": 12,
+  "unresolved_source_definitions": 15,
+  "limitations": [
+    "Only one matched human-reference trace in this snapshot.",
+    "Undefined metrics are not zero.",
+    "No held-out performance claim.",
+    "Disagreements have not yet been independently reviewed."
+  ]
+}
