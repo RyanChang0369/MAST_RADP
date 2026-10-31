@@ -1,0 +1,1054 @@
+{
+  "run_id": "cf8e3399592fe5d3",
+  "review_source": "Assistant-assisted evidence review of saved case notes and Gemini responses; not an independent pre-model human annotation or a fresh GitHub verification.",
+  "definitions_sha256": "c5682ef8834df134fbd73af07ca59f307952d4da2c224c28c293792f7d70a319",
+  "raw_file_sha256": {
+    "autogen-6551.json": "6e5de98fdf42593985c4b4d99604b0cfee2fe5ec6c044dd432160703e10cc2bc",
+    "autogen-6746.json": "c26aa54aae37f3a5adbbeb87b34ad12402e4d9e76fd7f4055fb04a428451000b",
+    "autogen-7043.json": "52bb4c5e3718736c4d154183937192377fbe1615b4fd1102bdbbb20b1b431a2e",
+    "crewai-7473.json": "da1462cceb2b27f5cd9d5cfea3ebdcc817150518701532c66672e2881a04534f",
+    "crewai-7614.json": "bb65b95abf630595f4388d810484de981a8d76caf764433df7b6d590156a77ee",
+    "crewai-8219.json": "86383577bf0f8310c02a0eade881728bbaf233031d2489326f71a684ee9bc7b1",
+    "crewai-8262.json": "f6dfb601b21951a6bcff268ddb55af5acfc698582e7879a4529301f7421f4857",
+    "crewai-8368.json": "1b45d08453308ae66b1e2c03553c111fc3dda9fc59a1f1382c1dd91d7a98a417",
+    "crewai-8483.json": "95c04125a57b0eb75b3eab45510b7a71bc902b9baaaad8033ccff88381ef4b5f",
+    "run_configuration.json": "0a17e450fcbb53bc95068ade83033eee2917b998294160fec72f3f70f184b0f5"
+  },
+  "reviews": [
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "disobey_task_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The second task performs no agent work, but the notes do not provide its specific task constraints or an agent response that can be checked against them. Nonexecution alone does not establish task-specification disobedience.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "disobey_role_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Researcher, analyst and presenter roles are named, but their role instructions and actual role compliance are not supplied. A second-run execution-state failure does not establish a role violation.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "step_repetition",
+      "review_label": "absent",
+      "review_reason": "In the reported second run, no agent work occurs at all. This observed failure is nonexecution, not unnecessary repetition of already completed steps; this does not assess every action in the first run.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "loss_of_conversation_history",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The report establishes failure to restart execution, not the contents of retained conversation history. The fix discussion requires retaining history but does not show that history was truncated in the failing run.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "unaware_of_termination_conditions",
+      "review_label": "absent",
+      "review_reason": "The first task reaches TERMINATE and the second stops without agent work. The observed behavior is early stopping rather than unnecessary continuation after a stopping criterion.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "conversation_reset",
+      "review_label": "absent",
+      "review_reason": "The reported second task returns only a completion message, not a restarted dialogue. Resetting execution state in a proposed fix is not evidence of a conversation reset in the failure.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "fail_to_ask_for_clarification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The report does not show ambiguous data encountered by an agent or an inter-agent opportunity to ask for clarification. The lack of second-run messages cannot establish this behavior.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "task_derailment",
+      "review_label": "absent",
+      "review_reason": "The second task produces no agent work, rather than an observed sequence of irrelevant or off-objective actions. The documented symptom is immediate completion.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "information_withholding",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The notes do not establish that an agent acquired task information and then failed to communicate it. This definition does not require deliberate intent, but its acquisition-and-sharing conditions still need evidence.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "ignored_other_agents_input",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The notes do not expose the inputs available to the receiving agents in the failing second run or show them disregarding a recommendation. Scheduler nonexecution alone is not sufficient.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "reasoning_action_mismatch",
+      "review_label": "insufficient_evidence",
+      "review_reason": "No agent reasoning statement and contradictory action are supplied. An expected workflow and an incorrect result are not themselves a reasoning-action comparison.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "premature_termination",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The second task clearly ends before doing work, but the supplied definition also invokes an ill-specified termination condition. Execution-state handling is implicated; the notes do not resolve whether that defining condition is satisfied.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "no_or_incomplete_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "No in-workflow verifier behavior or coverage is shown. Maintainer regression-test requests concern software testing, not proof that a task-level verification mechanism failed.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6746",
+      "mast_category": "incorrect_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The notes do not document the task outcomes and checking opportunities needed to evaluate omitted result verification. A state bug and its regression fix do not establish this historical definition.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "disobey_task_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Remaining work and a false completion report are documented, but specific task requirements and agent compliance are not. A restoration failure alone does not establish disobedience.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "disobey_role_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The saved-state and ready-queue evidence contains no role instructions or observed role substitution. Agent role compliance cannot be determined from this report.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "step_repetition",
+      "review_label": "absent",
+      "review_reason": "The reported resume executes no agents despite remaining work. Cyclic graph structure and the corrected A,B,A,B,C regression sequence do not demonstrate unnecessary repetition of completed work in the failed execution.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "loss_of_conversation_history",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The lost state concerns activation groups and scheduling readiness. The notes do not show conversational context truncation or reversion, so lost execution state must not automatically be called lost conversation history.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "unaware_of_termination_conditions",
+      "review_label": "absent",
+      "review_reason": "The observed workflow stops instead of continuing unnecessarily. An empty ready queue and false completion report do not show an agent continuing after a stopping criterion.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "conversation_reset",
+      "review_label": "absent",
+      "review_reason": "Restoration yields no next-agent execution rather than a restarted dialogue. The concrete failure is a stalled or completed scheduler frontier, not an observed conversation restart.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "fail_to_ask_for_clarification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "No ambiguous inter-agent information exchange or missed clarification request is shown. Persistence state fragments are not evidence of that conversational behavior.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "task_derailment",
+      "review_label": "absent",
+      "review_reason": "No agents execute on resume. The report therefore establishes nonexecution, not observed diversion into irrelevant or off-objective actions.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "information_withholding",
+      "review_label": "insufficient_evidence",
+      "review_reason": "An empty ready queue does not establish that a participant possessed important data and failed to share it. Intent is not required by the definition, but acquisition and a failed communication still need evidence.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "ignored_other_agents_input",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The issue documents failure to activate a successor, not what input the successor received and disregarded. The available notes do not establish the required consideration of another agent input.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "reasoning_action_mismatch",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The ready queue contradicts expected scheduling progress, but no agent reasoning and inconsistent agent action are supplied. System-state inconsistency is not automatically this category.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "premature_termination",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Completion is reported with work remaining, supporting the early-ending symptom. The ill-specified termination criterion required by the supplied body is not established. The cyclic activation-state proposal explains a subset and must not be promoted to a confirmed universal cause.",
+      "review_quotes": [],
+      "gemini_label": "present"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "no_or_incomplete_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "No task-verification mechanism or its actual checks are described. The proposed persistence regression and pending PR checks do not prove weak verification during agent iterations.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-7043",
+      "mast_category": "incorrect_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The report does not establish which result-verification checks were needed and omitted within the workflow. A false completion message alone is not sufficient to assign this historical verification definition.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "disobey_task_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The graph roles and failing branch are described, but concrete task constraints and agent outputs are not available for checking compliance. Routing failure is not by itself task disobedience.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "disobey_role_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Search, judge, answer, fallback and translator roles are named, but explicit role constraints and violations are not supplied. Failure to schedule the translator does not establish role substitution.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "step_repetition",
+      "review_label": "insufficient_evidence",
+      "review_reason": "A B-to-A loop is part of the design, but the notes do not show completed work followed by unnecessary repetition. Normal conditional looping is not enough to classify repetition as present or absent throughout the trace.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "loss_of_conversation_history",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The traceback and activation guidance do not expose retained conversational history. They cannot establish or exclude context truncation and conversational reversion.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "unaware_of_termination_conditions",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The documented exception is a failure to find the next speaker. The notes provide neither a stopping criterion followed by unnecessary continuation nor enough interaction detail to assess agent awareness.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "conversation_reset",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The case describes a branch/join exception, not a displayed dialogue sequence. No conversation restart is established, but the notes do not comprehensively rule one out.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "fail_to_ask_for_clarification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The record does not show unclear information between agents and an opportunity to clarify it. Framework activation semantics must not be substituted for conversational clarification evidence.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "task_derailment",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The report traces a speaker-selection exception after the fallback reply, without the task objective and content needed to judge semantic derailment. A routing failure alone is not enough.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "information_withholding",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The evidence does not identify important data acquired by one agent and then not communicated. Intentional withholding is not required, but the actual acquisition-and-sharing pattern is missing.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "ignored_other_agents_input",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Mutually exclusive parents and any-parent activation explain a scheduling issue, not an agent receiving and disregarding a recommendation. Receiving-agent context is not shown.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "reasoning_action_mismatch",
+      "review_label": "insufficient_evidence",
+      "review_reason": "No reasoning statement is paired with a contradictory action. A runtime traceback does not provide evidence of an agent reasoning-action discrepancy.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "premature_termination",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The original run fails with a RuntimeError; the later translator activation issue involves mixed implementation/configuration behavior. Neither by itself establishes the ill-specified termination condition in the supplied definition.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "no_or_incomplete_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "A judge agent exists, but the notes do not show its verification criteria, outputs or coverage. Its name alone cannot establish weak or incomplete verification.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "autogen-6551",
+      "mast_category": "incorrect_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The routing error does not show what task-result checks were needed and omitted. The historical definition body concerns omitted outcome checking, not merely an exception or a verification-sounding category name.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "disobey_task_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Equivalent coworker spellings are expected to resolve identically, and the notes establish a normalization failure at the delegation tool boundary. They do not supply the user-requested operation/object or an actual agent task constraint beyond general tool/API correctness. Thus a task-specification violation is not established; the spelling-dependent failure alone is insufficient.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "disobey_role_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Role-name resolution fails before worker selection, but the notes do not specify a role responsibility that a participating agent then violates. A parser rejecting a name is not itself evidence that an agent behaves as another role; intention is not required, but the role-behavior link is missing.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "step_repetition",
+      "review_label": "absent",
+      "review_reason": "Testing six coworker spellings is a purposeful comparative reproduction, not unnecessary repetition of a completed workflow step. The described failure is failed selection, not an observed retry loop; this absence is scoped to that reproduction.",
+      "review_quotes": [
+        "Offline tool-level script patches Agent.execute_task and tests six spellings"
+      ],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "loss_of_conversation_history",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The notes isolate spelling-dependent coworker matching and patched execution, without conversation-state snapshots. This mechanism does not establish truncation and reversion, but a tool-only experiment cannot establish that conversation history was preserved either.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "unaware_of_termination_conditions",
+      "review_label": "insufficient_evidence",
+      "review_reason": "A coworker-not-found error is shown, but neither a stopping criterion nor subsequent continuation is recorded. Failed name resolution may block delegation without any failure to recognize when an interaction should end.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "conversation_reset",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The offline spelling tests do not describe a dialogue lifecycle or an unexpected restart. Separate test invocations could be normal setup rather than resetting a conversation; dialogue evidence is unavailable.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "fail_to_ask_for_clarification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "An unresolved coworker could in principle call for additional information, but the notes do not show an agent encountering ambiguous data and failing to ask a peer. The successful alternative spellings instead support normalization failure; inter-agent clarification behavior is unobserved.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "task_derailment",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Delegation is blocked, but no agent action deviating to a different objective or irrelevant activity is described. Failure to execute an intended action is not automatically derailment; the patched tool reproduction provides no downstream task trajectory.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "information_withholding",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Failed worker selection can prevent a handoff, but no important data already obtained by a specific agent is identified as uncommunicated. Withholding need not be deliberate; the missing acquisition-and-sharing evidence, not lack of intent, prevents a positive label.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "ignored_other_agents_input",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The tool rejects a coworker spelling, but no input or recommendation from another agent is identified as available and disregarded. Parsing the caller-supplied role name is an alternative mechanism, and the tool-only notes do not establish peer-input handling.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "reasoning_action_mismatch",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Equivalent names produce different tool outcomes, but the record contains no logical reasoning paired with an incompatible action. A serialization/normalization mismatch need not be a reasoning-action discrepancy; the required reasoning evidence is missing.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "premature_termination",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The error prevents delegation, but no dialogue endpoint or ill-specified termination condition is documented. A parser exception alone cannot distinguish an unfinished/blocked tool call from premature termination under the definition.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "no_or_incomplete_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Role matching and an error message indicate a selection check, not a documented task-output verifier. The quoted-scalar regression gap concerns proposed fix testing; it does not establish weak critical verification during agent iterations. Verification design and runtime behavior remain unknown.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7614",
+      "mast_category": "incorrect_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Applying the definition body, this category concerns omitted result checking, not an incorrect verdict. The notes show an overt matching failure but no unchecked outcome accepted or propagated because checking was omitted; the existence of a bug and PR test gap does not establish that omission.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "disobey_task_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The notes establish that repeated hierarchical kickoff should invoke workers and that the second run crashes or self-delegates. That is evidence of lifecycle/routing failure, but no actual user task instruction or requested operation/object is provided beyond expected framework behavior. Do not infer task-specification nonadherence merely from unsuccessful delegation.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "disobey_role_specification",
+      "review_label": "present",
+      "review_reason": "The concrete role arrangement is manager Boss delegating to worker Writer, while the manager_agent variant delegates to itself and never invokes the worker. This supports a breach of the manager-to-worker responsibility boundary regardless of intent or framework lifecycle causation. It is limited to the self-delegation variant; the crash-only variant would not independently establish role nonadherence.",
+      "review_quotes": [
+        "Multi-agent context: Hierarchical manager Boss delegates to worker Writer",
+        "manager_agent delegates to itself",
+        "manager_agent variant only lists Boss and never invokes worker"
+      ],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "step_repetition",
+      "review_label": "absent",
+      "review_reason": "The second kickoff is an intentional new run in a repeated-use test, not an unnecessary redo within the interaction. Worker call count remaining at one also argues against repeated completed worker execution; the record does not show a self-delegation loop.",
+      "review_quotes": [
+        "Scripted BaseLLM; run same crew twice; worker call count remains 1 in manager_agent variant"
+      ],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "loss_of_conversation_history",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Retained manager lifecycle state is reported, but no conversational messages are shown truncated or reverted. Persisting inappropriate tools could explain the symptom without lost history; the notes do not inspect history sufficiently to certify its absence.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "unaware_of_termination_conditions",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The second run crashes or misroutes delegation; no trigger for ending interaction and no continuation past that trigger are shown. Self-delegation is not by itself evidence of ignoring termination criteria or an endless loop.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "conversation_reset",
+      "review_label": "absent",
+      "review_reason": "Running the same crew twice is explicitly the scripted test procedure. The second kickoff is therefore a requested new execution, not an unwarranted dialogue restart; the observed defect concerns state retained across that requested boundary.",
+      "review_quotes": [
+        "Reproduction evidence: Scripted BaseLLM; run same crew twice; worker call count remains 1 in manager_agent variant"
+      ],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "fail_to_ask_for_clarification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The Boss/Writer assignment is clear, while lifecycle state makes only Boss available on the second run. The notes do not show unclear data presented to an agent, a missing peer question, or how clarification could be requested; a routing defect is an alternative to failed clarification.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "task_derailment",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Self-delegation redirects the same attempted work to Boss instead of Writer, but the notes do not establish an irrelevant action or departure from the task objective. Failed same-task delegation can violate role scope without task derailment; the actual task content and subsequent manager actions are not recorded.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "information_withholding",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The worker is not called on the second run, but the notes identify no important data an agent already obtained and then failed to share. A missing dispatch is not sufficient to infer a missing data handoff; deliberate withholding is not required by the definition.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "ignored_other_agents_input",
+      "review_label": "insufficient_evidence",
+      "review_reason": "No Writer output or other peer recommendation available on the failing run is described as ignored. Worker noninvocation and manager-state corruption are supported, but they do not establish disregarding an actual received peer input.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "reasoning_action_mismatch",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Self-delegation conflicts with the expected role allocation, but there is no recorded reasoning process stating a different action. A framework-altered coworker list can explain the action without a reasoning/action inconsistency; do not equate a role mismatch with a reasoning mismatch.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "premature_termination",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The manager_llm exception interrupts the run, but the record does not attribute it to an ill-specified termination condition. The manager_agent variant also lacks an endpoint trace. A lifecycle/tools invariant failure is an alternative to the required termination-condition failure.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "no_or_incomplete_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The tools exception is an explicit invariant check that fires; the self-delegation variant suggests a routing invariant could be useful but does not document a designed task verifier that missed it. Post-fix method coverage gaps are developer testing evidence, not proof of inadequate verification during agent iterations.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8368",
+      "mast_category": "incorrect_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Under the supplied body, the question is omitted result verification. No completed result, omitted confirmation stage, or unchecked acceptance is described; second-run nonexecution alone cannot establish that checking was omitted. Passing fix checks do not answer this runtime question.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "disobey_task_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The notes establish that a skipped conditional task should not pass prior-run output, yet stale output reaches Consumer. This demonstrates a context-state correctness defect, but no user-requested operation/object or actual agent task constraint is supplied beyond that framework invariant. It is therefore insufficient to establish task-specification nonadherence.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "disobey_role_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Gate, Researcher and Consumer are named, but no agent is shown taking another role or breaching a specified role responsibility. Incorrect Consumer context is a task-state failure; the notes do not establish a role-behavior violation independently.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "step_repetition",
+      "review_label": "absent",
+      "review_reason": "RUN followed by SKIP is the intentional two-run control, and the conditional task is reported skipped, not executed again. Reusing an old output is not reiterating the completed Researcher step; this is evidence against repetition as the described mechanism.",
+      "review_quotes": [
+        "Scripted BaseLLMs; reused crew twice, RUN then SKIP, memory=False",
+        "Returned skipped output empty but task.output FIRST_RUN_ONLY"
+      ],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "loss_of_conversation_history",
+      "review_label": "absent",
+      "review_reason": "The described context failure is retention and addition of stale prior-run output, not truncation of recent interaction history and reversion caused by its loss. FIRST_RUN_ONLY in Consumer input supports contamination; no lost-history mechanism is claimed. This is scoped to the reported failure, not a claim about every unseen message.",
+      "review_quotes": [
+        "Conditional skip retains previous execution output and contaminates another agent context"
+      ],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "unaware_of_termination_conditions",
+      "review_label": "insufficient_evidence",
+      "review_reason": "SKIP is a condition for skipping one task, not necessarily a criterion for ending the agents’ interaction. Consumer is expected to continue; sending it stale data does not establish continuation beyond a termination criterion. No interaction-level termination evidence is supplied.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "conversation_reset",
+      "review_label": "absent",
+      "review_reason": "The crew is intentionally reused for a RUN then SKIP test, and old output persists rather than a dialogue being unexpectedly restarted. The reported transition is a requested second run with stale task state; it is not an observed unwarranted reset.",
+      "review_quotes": [
+        "Scripted BaseLLMs; reused crew twice, RUN then SKIP, memory=False",
+        "Conditional skip retains previous execution output and contaminates another agent context"
+      ],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "fail_to_ask_for_clarification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The record shows stale input reaching Consumer but not Consumer recognizing ambiguity or incomplete data and failing to ask Gate/Researcher. A stale marker may look valid, so no clarification obligation or omitted peer question can be inferred from contamination alone.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "task_derailment",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Out-of-run data reaches Consumer, but its subsequent actions or answer are not recorded as pursuing an irrelevant objective. Contaminated context can cause derailment, yet potential influence is not observed deviation; the evidence supports a task-context violation without proving this separate category.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "information_withholding",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Previous-run information is over-propagated, not shown withheld. However, the notes do not inventory current-run important information or its sharing, so they cannot certify absence of withholding generally. No acquired-but-unshared datum is identified, and intention would not be needed if one were.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "ignored_other_agents_input",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The current skip state and stale Researcher output conflict, but the notes do not show a peer message received and disregarded by an agent. Framework state/context assembly could cause the same symptom without peer-input disregard; Consumer decision-making is unreported.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "reasoning_action_mismatch",
+      "review_label": "insufficient_evidence",
+      "review_reason": "An empty returned skipped output conflicts with retained task.output, but those are state representations, not a recorded logical reasoning/action pair. No Consumer or Gate reasoning is supplied; state inconsistency alone does not meet this definition.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "premature_termination",
+      "review_label": "absent",
+      "review_reason": "The reported failure reaches the next model call with stale context, rather than ending before the downstream handoff. The intentional conditional skip is not an ill-specified end to the interaction. This observed continuation argues against premature termination as the reported mechanism.",
+      "review_quotes": [
+        "Skipped task passed previous-run output to the next model call",
+        "marker appears in consumer prompt"
+      ],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "no_or_incomplete_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The reproduction assertions detect stale state, but they are external diagnostic tests, not a verifier shown to exist in the agent workflow. A skipped-output invariant checker could help, yet the notes do not establish attempted critical verification or its coverage during execution.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8483",
+      "mast_category": "incorrect_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The body asks about missing result checks. Stale output reaches a model call, but the notes do not describe a verification stage being omitted or an outcome accepted without confirmation; a context-assembly defect can occur despite other checks. Diagnostic assertions and proposed local tests do not establish runtime omission.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "disobey_task_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The retry loses account facts and produces placeholders, but the notes do not give the user’s actual requested operation, object, or task constraints. The expected context-retention behavior is a framework requirement, not enough by itself to prove violation of an explicit agent task specification; the failed output is also model-dependent.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "disobey_role_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Researcher and Writer are named, but their exact role constraints and a role-violating action are not given. Missing facts could arise entirely from retry context handling rather than role confusion.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "step_repetition",
+      "review_label": "absent",
+      "review_reason": "The documented repetition is a writer retry after a guardrail rejects the mocked first failure, not repetition of a previously successful writer step. The successful upstream research is not reported as rerun; this supplies a legitimate retry explanation for the observed repetition.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "loss_of_conversation_history",
+      "review_label": "present",
+      "review_reason": "The notes explicitly report replacement of the previously successful researcher context during writer retry, establishing unexpected truncation of recent task context. The retry then loses the account code and substitutes placeholders while the no-failure control retains the facts, grounding reversion to a pre-research-fact information state. This supports the definition at the task-context level, not deletion of a full persisted dialogue; output is partly model-dependent and the successful-control excerpt alone is not failure evidence.",
+      "review_quotes": [
+        "Guardrail retry replaces upstream researcher context in writer retry",
+        "Retry output loses upstream account code and uses placeholders; no-failure control contains facts"
+      ],
+      "gemini_label": "present"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "unaware_of_termination_conditions",
+      "review_label": "insufficient_evidence",
+      "review_reason": "A guardrail-triggered retry is observed, but the notes do not establish a satisfied stopping criterion followed by unnecessary continuation. The conflicting retry-count descriptions further prevent inferring termination unawareness from retry occurrence.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "conversation_reset",
+      "review_label": "absent",
+      "review_reason": "The reported sequence continues the same writer task through a guardrail retry. Its upstream context is replaced, but there is no reported return to the beginning of the dialogue; a task-local retry explains the observed continuation better than a dialogue restart.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "fail_to_ask_for_clarification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Placeholders suggest missing data, but the notes do not show whether the writer recognized the gap or could ask the researcher for it. Context loss alone does not establish failure or inability to request clarification between agents.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "task_derailment",
+      "review_label": "absent",
+      "review_reason": "The failed output still concerns the account and uses placeholders for its facts. That is defective execution of the same writing objective, not observed movement to an irrelevant objective or activity.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "information_withholding",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The researcher previously supplied usable context, and retry construction later loses it. Intent is not required by the definition, but the notes do not identify an agent that possessed important data and then failed to communicate it; a framework retry-boundary omission remains the supported alternative.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "ignored_other_agents_input",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Researcher context is replaced before the writer retry, and the retry output lacks the facts. That supports unavailable input rather than an observable writer failure to consider input actually supplied to it. The notes do not show the missing facts reaching the retried writer and then being disregarded; transport/context loss is an alternative explanation, not proof of this category.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "reasoning_action_mismatch",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The notes contain no writer reasoning or plan to compare with its action. A placeholder output after context replacement is explainable without a reasoning/action discrepancy.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "premature_termination",
+      "review_label": "insufficient_evidence",
+      "review_reason": "A degraded retry output is described, but the stopping condition and final acceptance sequence are not. A retry-context bug does not establish that an ill-specified termination condition ended the task too early.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "no_or_incomplete_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "A guardrail exists and rejects the injected first failure, showing some verification works. Its criteria and whether the fact-poor retry passed a final check are unspecified, so neither adequate coverage nor a weak/incomplete verifier is established; the bug alone is not proof.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8219",
+      "mast_category": "incorrect_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Applying the body about omitted result checking, not the misleading category name: the guardrail shows explicit checking of the first failure, but the notes do not say whether the retry outcome was checked. Omission of needed final checking remains possible, not observed.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "disobey_task_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The synthetic stream demonstrates corrupted reconstruction against the expected append behavior. However, direct chunk concatenation is an API/transport invariant in these notes; no actual user-requested agent operation or task constraint is supplied. The bug therefore does not by itself establish task-specification noncompliance.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "disobey_role_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Remote and local endpoints are identified, but no assigned-role constraints or role-swapping behavior are supplied. A reassembly defect is not itself evidence of violating a defined agent role.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "step_repetition",
+      "review_label": "absent",
+      "review_reason": "The concrete synthetic sequence streams distinct text parts and then completion. The malformed output is attributed to inserted separators, not duplicate execution of an already completed step; no repeated step is needed to explain this observed corruption.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "loss_of_conversation_history",
+      "review_label": "absent",
+      "review_reason": "The documented defect adds spaces to the supplied chunks rather than truncating recent interaction history or returning to an earlier conversational state. This is contrary evidence for mapping this particular corruption symptom to history loss, not proof about unreported histories.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "unaware_of_termination_conditions",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The stream reaches completion, but no agent stopping criteria or post-criterion actions are described. The wider max-turn-path claim is not checked evidence of unnecessary continuation.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "conversation_reset",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The synthetic test records a single stream and completion, not a dialogue lifecycle. It establishes reassembly corruption but cannot establish or rule out an unwarranted restart elsewhere.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "fail_to_ask_for_clarification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "No agent response to the corrupted text or attempt to request additional information is recorded. An automatic concatenation error does not establish an inability to ask another agent for clarification.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "task_derailment",
+      "review_label": "absent",
+      "review_reason": "The local client still performs the intended delivery/reconstruction activity; the output is malformed by extra spaces. This is incorrect execution on the original objective, not observed redirection to an irrelevant task.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "information_withholding",
+      "review_label": "absent",
+      "review_reason": "In the supplied reproduction the remote text chunks reach the local client and appear with added spaces. That observed transfer contradicts withholding those chunks; corruption of communicated data is not, on its own, failure by a possessing agent to share it.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "ignored_other_agents_input",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The remote chunks are processed but joined incorrectly. The notes do not show a semantic decision that fails to consider another agent’s input, and transport-formatting corruption alone cannot distinguish that behavior from a purely mechanical separator bug.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "reasoning_action_mismatch",
+      "review_label": "insufficient_evidence",
+      "review_reason": "No agent reasoning is recorded. A discrepancy between expected concatenation and implemented concatenation is not enough to establish inconsistency between an agent’s logical reasoning and action.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "premature_termination",
+      "review_label": "absent",
+      "review_reason": "The stated synthetic stream emits the chunks through the final exclamation mark and then completion. The observed failure is malformed complete text rather than ending before exchange is finished; no ill-specified early-stop condition is identified.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "no_or_incomplete_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The reporter’s assertion detects corruption and proposed-fix checks concern software testing, not a described runtime verifier. The limited streaming fix does not establish an inadequately designed in-workflow checking mechanism.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-7473",
+      "mast_category": "incorrect_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The body concerns omitted outcome checking, not verification that produces a wrong verdict. A reporter assertion catches the malformed output, but the notes do not describe whether the operational system omits a beneficial result check; defect existence alone is insufficient.",
+      "review_quotes": [],
+      "gemini_label": "insufficient_evidence"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "disobey_task_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The inspected follow-up request omits the completed artifact, violating the reported prompt-construction expectation. The notes do not identify the user’s actual requested operation, object, or agent task constraints, so this framework handoff defect alone does not establish violation of a task specification.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "disobey_role_specification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Caller and remote-server functions are described, but no exact role constraints or evidence of acting as another role appears. An omitted answer can be fully explained by the prompt-boundary defect.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "step_repetition",
+      "review_label": "insufficient_evidence",
+      "review_reason": "A delegation and next request are documented, but no subsequent re-delegation or repetition of a completed step is recorded. The PR bot’s possible delegation risk is not a reproduced repetition event.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "loss_of_conversation_history",
+      "review_label": "present",
+      "review_reason": "The completed remote answer is extracted but omitted at the follow-up prompt boundary, establishing unexpected loss of recent interaction context. The inspected follow-up contains only user messages despite referring to the remote reply, grounding reversion to the antecedent user-only/pre-answer information state. This is prompt/task-context loss, not proof that a previously persisted conversation message was deleted; an artifact never inserted into stored history is a compatible implementation explanation.",
+      "review_quotes": [
+        "Completed remote A2A artifact is extracted but omitted at caller follow-up prompt boundary",
+        "Follow-up contains user messages only and claims remote reply is in conversation history; artifact lost"
+      ],
+      "gemini_label": "present"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "unaware_of_termination_conditions",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The remote server completes and the caller follows up with trust_remote_completion_status=False. That follow-up may be the intended validation path, not ignorance of a stopping criterion; no unnecessary post-criterion sequence is recorded.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "conversation_reset",
+      "review_label": "absent",
+      "review_reason": "The inspected request is explicitly a follow-up to the same delegation and refers to the prior response. This continues the existing dialogue with missing content rather than showing a restart from the beginning; context omission need not be a reset.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "fail_to_ask_for_clarification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The next prompt lacks the answer, but the caller’s subsequent response and ability to seek clarification from the remote agent are not recorded. Missing input alone cannot establish failure to request additional information.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "task_derailment",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The faulty prompt is part of the intended post-delegation workflow, and no downstream irrelevant action is shown. Loss of the answer could derail later work, but that possible consequence is not observed here.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "information_withholding",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The remote agent supplies an artifact and the framework extracts it, but the answer does not reach the caller prompt. No intent is required; nevertheless the record does not establish a possessing agent’s failure to share, as distinct from successful remote sharing followed by framework omission.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "ignored_other_agents_input",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The framework extracts the remote answer but omits it from the next caller prompt. The recipient therefore lacks the very input it would need to consider. There is no observed caller decision disregarding received remote content, and framework handoff loss alone cannot establish recipient consideration failure.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "reasoning_action_mismatch",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The prompt incorrectly says the reply is in history, but no logical reasoning by the caller is recorded. A false framework-generated reference is not sufficient evidence of a reasoning/action mismatch by an agent.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "premature_termination",
+      "review_label": "absent",
+      "review_reason": "The local caller continues into a follow-up request after remote completion rather than stopping there. In the observed sequence the answer is lost at prompt construction, not because an ill-specified termination condition ends the exchange early.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "no_or_incomplete_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "The false trust flag indicates remote completion is not simply trusted, but the actual validation logic and verdict are not documented. The missing artifact may undermine validation, yet there is no evidence of what an existing verifier checked or accepted; pending fix checks are not workflow verification.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    },
+    {
+      "case_id": "crewai-8262",
+      "mast_category": "incorrect_verification",
+      "review_label": "insufficient_evidence",
+      "review_reason": "Under the supplied body this means omission of beneficial result checking. The notes stop at the next request and do not document a final result or absent final check; the bot’s security concern is also an assessment rather than a reproduced checking omission.",
+      "review_quotes": [],
+      "gemini_label": "absent"
+    }
+  ]
+}
