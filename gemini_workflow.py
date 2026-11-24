@@ -378,16 +378,24 @@ def evaluation_progress(root):
     split_file=root/"data/processed/full_corpus_step6_95118ac95142/split_manifest.json"
     manifest=json.loads(split_file.read_text(encoding="utf-8"))
     lookup={r["trace_hash"]:r["split"] for r in manifest["traces"]}
-    records={};latest=0;folders=[]
-    for folder in sorted((root/"saved_results").glob("gemini_full_corpus_evidence_v3_*")):
+    records={};latest=0;folders=[];superseded=[]
+    # The full development run is canonical. Earlier pilot folders are historical:
+    # a pilot trace that was re-run in the full folder is skipped (superseded), not
+    # double-counted. Duplicates between two canonical full-run folders still stop.
+    all_folders=sorted((root/"saved_results").glob("gemini_full_corpus_evidence_v3_*"))
+    ordered=[f for f in all_folders if f.name.startswith("gemini_full_corpus_evidence_v3_full_")]+[f for f in all_folders if not f.name.startswith("gemini_full_corpus_evidence_v3_full_")]
+    for folder in ordered:
         count=0
+        canonical=folder.name.startswith("gemini_full_corpus_evidence_v3_full_")
         for path in folder.glob("*.json"):
             if path.stem not in lookup:continue
-            if path.stem in records:raise RuntimeError("Duplicate v3 trace attempts: "+path.stem)
+            if path.stem in records:
+                if canonical:raise RuntimeError("Duplicate v3 trace attempts: "+path.stem)
+                superseded.append(str(path.relative_to(root)));continue
             record=json.loads(path.read_text(encoding="utf-8"))
             if record.get("trace_hash")!=path.stem:raise RuntimeError("Saved trace identity mismatch")
             records[path.stem]=record;count+=1;latest=max(latest,path.stat().st_mtime)
-        if count:folders.append({"folder":str(folder.relative_to(root)),"records":count})
+        if count:folders.append({"folder":str(folder.relative_to(root)),"records":count,"canonical":canonical})
     coverage={}
     for split in ("development","heldout"):
         hashes={h for h,s in lookup.items() if s==split};counts={}
@@ -397,7 +405,7 @@ def evaluation_progress(root):
         coverage[split]={"total":len(hashes),"statuses":counts}
     status_path=root/"data/processed/step6_consolidated_audit/full_evaluation_status.json"
     worker_status=json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else {}
-    return {"coverage":coverage,"worker_state":worker_status.get("state","not started locally"),"worker_pid":worker_status.get("worker_pid"),"worker_checkpoint_at":worker_status.get("updated_at"),"latest_record_update":datetime.fromtimestamp(latest,timezone.utc).isoformat() if latest else None,"supervisor_lock_exists":(root/"saved_results/STEP6_V3_SUPERVISOR_RUNNING.lock").exists(),"batch_lock_exists":(root/"saved_results/STEP6_V3_FULL_RUNNING.lock").exists(),"folders":folders,"all_traces_accounted_for":all(x["statuses"].get("unattempted",0)==0 for x in coverage.values()),"note":"A lock/checkpoint alone does not prove the worker is alive; invalid, blocked and unknown records are not valid predictions."}
+    return {"superseded_pilot_records":superseded,"coverage":coverage,"worker_state":worker_status.get("state","not started locally"),"worker_pid":worker_status.get("worker_pid"),"worker_checkpoint_at":worker_status.get("updated_at"),"latest_record_update":datetime.fromtimestamp(latest,timezone.utc).isoformat() if latest else None,"supervisor_lock_exists":(root/"saved_results/STEP6_V3_SUPERVISOR_RUNNING.lock").exists(),"batch_lock_exists":(root/"saved_results/STEP6_V3_FULL_RUNNING.lock").exists(),"folders":folders,"all_traces_accounted_for":all(x["statuses"].get("unattempted",0)==0 for x in coverage.values()),"note":"A lock/checkpoint alone does not prove the worker is alive; invalid, blocked and unknown records are not valid predictions."}
 
 def parser_contract_checks():
     """Small standard-library-only parser checks, no API calls or files required."""
