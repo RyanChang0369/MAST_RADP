@@ -1,0 +1,389 @@
+[
+  {
+    "scenario": "normal",
+    "version": "baseline",
+    "baseline_revision": "tool_signal_v2",
+    "fixture_signals": [
+      "WORKING",
+      "WORKING",
+      "DONE"
+    ],
+    "max_calls": 6,
+    "max_seconds": 2.0,
+    "initial_completed_flag": false,
+    "artifact": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tool_calls": 3,
+    "output_correct": true,
+    "reported_status": "Completed",
+    "false_completed": false,
+    "steps_after_completion": 0,
+    "termination_reason": "completion_flag",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 1,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "append",
+          "artifact": [
+            "A"
+          ],
+          "signal": "WORKING"
+        },
+        "error": null,
+        "postconditions_before": false,
+        "postconditions_after": false,
+        "completion_flag": false,
+        "elapsed_seconds": 1.6200006939470768e-05,
+        "termination_reason": null
+      },
+      {
+        "sequence": 2,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 2,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "append",
+          "artifact": [
+            "A",
+            "B"
+          ],
+          "signal": "WORKING"
+        },
+        "error": null,
+        "postconditions_before": false,
+        "postconditions_after": false,
+        "completion_flag": false,
+        "elapsed_seconds": 2.189993392676115e-05,
+        "termination_reason": null
+      },
+      {
+        "sequence": 3,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 3,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "append",
+          "artifact": [
+            "A",
+            "B",
+            "C"
+          ],
+          "signal": "DONE"
+        },
+        "error": null,
+        "postconditions_before": false,
+        "postconditions_after": true,
+        "completion_flag": true,
+        "elapsed_seconds": 2.5499961338937283e-05,
+        "termination_reason": null
+      },
+      {
+        "sequence": 4,
+        "event": "termination",
+        "state": "Completed",
+        "call_number": 3,
+        "tool_name": null,
+        "normalized_arguments": null,
+        "output": [
+          "A",
+          "B",
+          "C"
+        ],
+        "error": null,
+        "postconditions_after": true,
+        "completion_flag": true,
+        "elapsed_seconds": 2.629996743053198e-05,
+        "termination_reason": "completion_flag"
+      }
+    ]
+  },
+  {
+    "scenario": "premature_termination",
+    "version": "baseline",
+    "baseline_revision": "tool_signal_v2",
+    "fixture_signals": [
+      "DONE"
+    ],
+    "max_calls": 6,
+    "max_seconds": 2.0,
+    "initial_completed_flag": false,
+    "artifact": [
+      "A"
+    ],
+    "tool_calls": 1,
+    "output_correct": false,
+    "reported_status": "Completed",
+    "false_completed": true,
+    "steps_after_completion": 0,
+    "termination_reason": "completion_flag",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 1,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "append",
+          "artifact": [
+            "A"
+          ],
+          "signal": "DONE"
+        },
+        "error": null,
+        "postconditions_before": false,
+        "postconditions_after": false,
+        "completion_flag": true,
+        "elapsed_seconds": 3.900029696524143e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 2,
+        "event": "termination",
+        "state": "Completed",
+        "call_number": 1,
+        "tool_name": null,
+        "normalized_arguments": null,
+        "output": [
+          "A"
+        ],
+        "error": null,
+        "postconditions_after": false,
+        "completion_flag": true,
+        "elapsed_seconds": 5.200039595365524e-06,
+        "termination_reason": "completion_flag"
+      }
+    ]
+  },
+  {
+    "scenario": "missed_termination",
+    "version": "baseline",
+    "baseline_revision": "tool_signal_v2",
+    "fixture_signals": [
+      "WORKING",
+      "WORKING",
+      "WORKING",
+      "WORKING",
+      "WORKING",
+      "WORKING"
+    ],
+    "max_calls": 6,
+    "max_seconds": 2.0,
+    "initial_completed_flag": false,
+    "artifact": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tool_calls": 6,
+    "output_correct": true,
+    "reported_status": "Failed",
+    "false_completed": false,
+    "steps_after_completion": 3,
+    "termination_reason": "call_cap_reached",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 1,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "append",
+          "artifact": [
+            "A"
+          ],
+          "signal": "WORKING"
+        },
+        "error": null,
+        "postconditions_before": false,
+        "postconditions_after": false,
+        "completion_flag": false,
+        "elapsed_seconds": 3.6999117583036423e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 2,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 2,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "append",
+          "artifact": [
+            "A",
+            "B"
+          ],
+          "signal": "WORKING"
+        },
+        "error": null,
+        "postconditions_before": false,
+        "postconditions_after": false,
+        "completion_flag": false,
+        "elapsed_seconds": 1.0299962013959885e-05,
+        "termination_reason": null
+      },
+      {
+        "sequence": 3,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 3,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "append",
+          "artifact": [
+            "A",
+            "B",
+            "C"
+          ],
+          "signal": "WORKING"
+        },
+        "error": null,
+        "postconditions_before": false,
+        "postconditions_after": true,
+        "completion_flag": false,
+        "elapsed_seconds": 1.379998866468668e-05,
+        "termination_reason": null
+      },
+      {
+        "sequence": 4,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 4,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "unnecessary_work",
+          "artifact": [
+            "A",
+            "B",
+            "C"
+          ],
+          "signal": "WORKING"
+        },
+        "error": null,
+        "postconditions_before": true,
+        "postconditions_after": true,
+        "completion_flag": false,
+        "elapsed_seconds": 1.9399914890527725e-05,
+        "termination_reason": null
+      },
+      {
+        "sequence": 5,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 5,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "unnecessary_work",
+          "artifact": [
+            "A",
+            "B",
+            "C"
+          ],
+          "signal": "WORKING"
+        },
+        "error": null,
+        "postconditions_before": true,
+        "postconditions_after": true,
+        "completion_flag": false,
+        "elapsed_seconds": 2.22999369725585e-05,
+        "termination_reason": null
+      },
+      {
+        "sequence": 6,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 6,
+        "tool_name": "artifact_builder",
+        "normalized_arguments": "{\"target\": [\"A\", \"B\", \"C\"]}",
+        "output": {
+          "action": "unnecessary_work",
+          "artifact": [
+            "A",
+            "B",
+            "C"
+          ],
+          "signal": "WORKING"
+        },
+        "error": null,
+        "postconditions_before": true,
+        "postconditions_after": true,
+        "completion_flag": false,
+        "elapsed_seconds": 2.4999957531690598e-05,
+        "termination_reason": null
+      },
+      {
+        "sequence": 7,
+        "event": "termination",
+        "state": "Failed",
+        "call_number": 6,
+        "tool_name": null,
+        "normalized_arguments": null,
+        "output": [
+          "A",
+          "B",
+          "C"
+        ],
+        "error": null,
+        "postconditions_after": true,
+        "completion_flag": false,
+        "elapsed_seconds": 2.5999965146183968e-05,
+        "termination_reason": "call_cap_reached"
+      }
+    ]
+  },
+  {
+    "scenario": "stale_flag",
+    "version": "baseline",
+    "baseline_revision": "tool_signal_v2",
+    "fixture_signals": [
+      "WORKING",
+      "WORKING",
+      "DONE"
+    ],
+    "max_calls": 6,
+    "max_seconds": 2.0,
+    "initial_completed_flag": true,
+    "artifact": [],
+    "tool_calls": 0,
+    "output_correct": false,
+    "reported_status": "Completed",
+    "false_completed": true,
+    "steps_after_completion": 0,
+    "termination_reason": "completion_flag",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "termination",
+        "state": "Completed",
+        "call_number": 0,
+        "tool_name": null,
+        "normalized_arguments": null,
+        "output": [],
+        "error": null,
+        "postconditions_after": false,
+        "completion_flag": true,
+        "elapsed_seconds": 1.600012183189392e-06,
+        "termination_reason": "completion_flag"
+      }
+    ]
+  }
+]

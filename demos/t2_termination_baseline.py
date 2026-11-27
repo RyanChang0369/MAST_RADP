@@ -8,7 +8,17 @@ MAX_CALLS = 6
 MAX_SECONDS = 2.0
 
 
+# Controlled tool-signal fixtures; controller logic is identical in every case.
+SIGNALS = {
+    "normal": ["WORKING", "WORKING", "DONE"],
+    "premature_termination": ["DONE"],
+    "missed_termination": ["WORKING"] * MAX_CALLS,
+    "stale_flag": ["WORKING", "WORKING", "DONE"],
+}
+
+
 def run_baseline(scenario, initial_completed_flag=False):
+    signals = SIGNALS[scenario]
     started = time.perf_counter()
     artifact = []
     events = []
@@ -48,17 +58,10 @@ def run_baseline(scenario, initial_completed_flag=False):
         else:
             output = {"action": "unnecessary_work", "artifact": artifact.copy()}
 
-        if scenario == "normal":
-            completed_flag = calls >= 3
-        elif scenario == "premature_termination":
-            completed_flag = calls >= 1
-        elif scenario == "missed_termination":
-            completed_flag = False
-        elif scenario == "stale_flag":
-            # A previous run's flag was incorrectly reused.
-            pass
-        else:
-            raise ValueError(f"Unknown scenario: {scenario}")
+        # The baseline trusts the tool's signal without checking the artifact.
+        signal = signals[min(calls - 1, len(signals) - 1)]
+        output["signal"] = signal
+        completed_flag = signal == "DONE"
 
         events.append({
             "sequence": len(events) + 1,
@@ -100,6 +103,8 @@ def run_baseline(scenario, initial_completed_flag=False):
     return {
         "scenario": scenario,
         "version": "baseline",
+        "baseline_revision": "tool_signal_v2",
+        "fixture_signals": signals,
         "max_calls": MAX_CALLS,
         "max_seconds": MAX_SECONDS,
         "initial_completed_flag": initial_completed_flag,
@@ -124,6 +129,7 @@ def main():
 
     normal, premature, missed, stale = runs
 
+    assert normal["tool_calls"] == 3
     assert normal["output_correct"]
     assert normal["reported_status"] == "Completed"
     assert normal["steps_after_completion"] == 0
@@ -137,6 +143,12 @@ def main():
 
     assert stale["false_completed"]
     assert stale["tool_calls"] == 0
+
+    # Verify that all calls use the same signal-based stopping rule.
+    for run in runs:
+        for event in run["events"]:
+            if event["event"] == "tool_result":
+                assert event["completion_flag"] == (event["output"]["signal"] == "DONE")
 
     output_folder = Path(__file__).resolve().parent / "results"
     output_folder.mkdir(parents=True, exist_ok=True)
