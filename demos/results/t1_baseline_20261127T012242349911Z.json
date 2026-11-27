@@ -1,0 +1,240 @@
+[
+  {
+    "scenario": "normal",
+    "version": "baseline",
+    "max_calls": 6,
+    "max_seconds": 2.0,
+    "failures_before_success": 0,
+    "tool_calls": 1,
+    "longest_identical_no_progress_streak": 0,
+    "repetition_threshold_reached": false,
+    "calls_after_three_no_progress": 0,
+    "task_success": true,
+    "final_state": "Completed",
+    "termination_reason": "task_completed",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 1,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": {
+          "project_deadline": "Friday"
+        },
+        "error": null,
+        "made_progress": true,
+        "consecutive_identical_no_progress": 0,
+        "elapsed_seconds": 1.2100092135369778e-05,
+        "termination_reason": null
+      },
+      {
+        "sequence": 2,
+        "event": "termination",
+        "state": "Completed",
+        "call_number": 1,
+        "tool_name": null,
+        "normalized_arguments": null,
+        "output": {
+          "project_deadline": "Friday"
+        },
+        "error": null,
+        "made_progress": false,
+        "consecutive_identical_no_progress": 0,
+        "elapsed_seconds": 1.400010660290718e-05,
+        "termination_reason": "task_completed"
+      }
+    ]
+  },
+  {
+    "scenario": "transient_fault",
+    "version": "baseline",
+    "max_calls": 6,
+    "max_seconds": 2.0,
+    "failures_before_success": 2,
+    "tool_calls": 3,
+    "longest_identical_no_progress_streak": 2,
+    "repetition_threshold_reached": false,
+    "calls_after_three_no_progress": 0,
+    "task_success": true,
+    "final_state": "Completed",
+    "termination_reason": "task_completed",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 1,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": null,
+        "error": "lookup_unavailable",
+        "made_progress": false,
+        "consecutive_identical_no_progress": 1,
+        "elapsed_seconds": 4.600035026669502e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 2,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 2,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": null,
+        "error": "lookup_unavailable",
+        "made_progress": false,
+        "consecutive_identical_no_progress": 2,
+        "elapsed_seconds": 5.700043402612209e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 3,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 3,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": {
+          "project_deadline": "Friday"
+        },
+        "error": null,
+        "made_progress": true,
+        "consecutive_identical_no_progress": 0,
+        "elapsed_seconds": 6.300047971308231e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 4,
+        "event": "termination",
+        "state": "Completed",
+        "call_number": 3,
+        "tool_name": null,
+        "normalized_arguments": null,
+        "output": {
+          "project_deadline": "Friday"
+        },
+        "error": null,
+        "made_progress": false,
+        "consecutive_identical_no_progress": 0,
+        "elapsed_seconds": 7.70005863159895e-06,
+        "termination_reason": "task_completed"
+      }
+    ]
+  },
+  {
+    "scenario": "persistent_fault",
+    "version": "baseline",
+    "max_calls": 6,
+    "max_seconds": 2.0,
+    "failures_before_success": null,
+    "tool_calls": 6,
+    "longest_identical_no_progress_streak": 6,
+    "repetition_threshold_reached": true,
+    "calls_after_three_no_progress": 3,
+    "task_success": false,
+    "final_state": "Failed",
+    "termination_reason": "call_cap_reached",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 1,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": null,
+        "error": "lookup_unavailable",
+        "made_progress": false,
+        "consecutive_identical_no_progress": 1,
+        "elapsed_seconds": 3.100023604929447e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 2,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 2,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": null,
+        "error": "lookup_unavailable",
+        "made_progress": false,
+        "consecutive_identical_no_progress": 2,
+        "elapsed_seconds": 3.700028173625469e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 3,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 3,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": null,
+        "error": "lookup_unavailable",
+        "made_progress": false,
+        "consecutive_identical_no_progress": 3,
+        "elapsed_seconds": 4.09991480410099e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 4,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 4,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": null,
+        "error": "lookup_unavailable",
+        "made_progress": false,
+        "consecutive_identical_no_progress": 4,
+        "elapsed_seconds": 7.1999384090304375e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 5,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 5,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": null,
+        "error": "lookup_unavailable",
+        "made_progress": false,
+        "consecutive_identical_no_progress": 5,
+        "elapsed_seconds": 8.09994526207447e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 6,
+        "event": "tool_result",
+        "state": "Running",
+        "call_number": 6,
+        "tool_name": "primary_lookup",
+        "normalized_arguments": "{\"query\": \"project_deadline\"}",
+        "output": null,
+        "error": "lookup_unavailable",
+        "made_progress": false,
+        "consecutive_identical_no_progress": 6,
+        "elapsed_seconds": 8.699949830770493e-06,
+        "termination_reason": null
+      },
+      {
+        "sequence": 7,
+        "event": "termination",
+        "state": "Failed",
+        "call_number": 6,
+        "tool_name": null,
+        "normalized_arguments": null,
+        "output": null,
+        "error": null,
+        "made_progress": false,
+        "consecutive_identical_no_progress": 6,
+        "elapsed_seconds": 1.009996049106121e-05,
+        "termination_reason": "call_cap_reached"
+      }
+    ]
+  }
+]
